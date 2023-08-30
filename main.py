@@ -5,7 +5,7 @@ import requests
 import ping3
 from datetime import datetime
 
-target_ip = "192.168.8.1/24"
+target_ip = "192.168.8.0/25"
 target_port_range = (1, 1024)
 
 def get_hostname_by_ip(ip_address):
@@ -104,15 +104,15 @@ for client in clients:
 
     device_hostname = get_hostname_by_ip(client['ip'])
     vendor_name = get_vendor_name(client['mac'])
-    open_ports = scan_open_ports(client['ip'], target_port_range)
-    status_result = check_device_status(client['ip'])
+    #open_ports = scan_open_ports(client['ip'], target_port_range)
+    #status_result = check_device_status(client['ip'])
 
     print("{:16}    {}    {:25}  {}".format(client['ip'], client['mac'],device_hostname,vendor_name))  
-    if open_ports:
+"""     if open_ports:
         print(f"Open ports on {client['ip']}: {open_ports}")
     else:
         print(f"No open ports found on {client['ip']}.")
-    print(status_result+"\n")
+    print(status_result+"\n") """
 
 
 
